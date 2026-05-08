@@ -1,0 +1,895 @@
+    /* ===== إعدادات عامة ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+        main {
+        flex: 1;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        direction: rtl;
+        background-color: #f5f5f5;
+        color: #222;
+        transition: background 0.3s, color 0.3s;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* ===== الوضع الليلي ===== */
+    body.night-mode {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+
+    #modeBtn {
+        background: linear-gradient(135deg, #f0c040, #e6a817);
+        border: none;
+        padding: 8px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 18px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s;
+    }
+
+    #modeBtn:hover {
+        transform: scale(1.1);
+    }
+
+    body.night-mode .navbar {
+        background-color: #0d3320;
+    }
+
+    body.night-mode #modeBtn {
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
+        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== الناف بار ===== */
+    .navbar {
+        background-color: #1a5c38;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo a {
+        color: white;
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .nav-links a:hover {
+        color: #f0c040;
+    }
+
+    .nav-services {
+        background-color: #1a5c38;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+            gap: 20px;
+
+    }   
+
+    .nav-services a {
+        background-color: #1a5c38;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s, color 0.3s;
+    }
+    .nav-services a :hover {
+        background-color: #f0c040;
+        color: #1a5c38;
+    }
+
+    /* ===== زر الوضع الليلي ===== */
+    #modeBtn {
+        background-color: #f0c040;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    body.night-mode .navbar {
+        background-color: #0d3320;
+    }
+
+    body.night-mode #modeBtn {
+        background-color: #c9a227;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 80px;
+        background-color: white;
+        gap: 40px;
+    }
+
+    body.night-mode .hero {
+        background-color: #2a2a2a;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+        color: #1a5c38;
+        margin-bottom: 15px;
+    }
+
+    body.night-mode .hero-text h1 {
+        color: #4caf7d;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 25px;
+        line-height: 1.8;
+    }
+
+    body.night-mode .hero-text p {
+        color: #ccc;
+    }
+
+    .btn-hero {
+        background-color: #1a5c38;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+
+    .btn-hero:hover {
+        background-color: #f0c040;
+        color: #1a5c38;
+    }
+
+    .hero-welcome {
+        background-color: #1a5c38;
+        color: white;
+        padding: 60px 80px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .hero-welcome h2 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    body.night-mode .hero-welcome {
+        background-color: #0d3320;
+    }
+
+    /* ===== قسم البطاقات ===== */
+    .cards-section {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 60px 80px;
+        background-color: #f5f5f5;
+    }
+
+    body.night-mode .cards-section {
+        background-color: #1a1a1a;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 40px 30px;
+        text-align: center;
+        flex: 1;
+        max-width: 300px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+    }
+
+    body.night-mode .card {
+        background-color: #2a2a2a;
+    }
+
+    .card-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        color: #1a5c38;
+        margin-bottom: 10px;
+    }
+
+    body.night-mode .card h3 {
+        color: #4caf7d;
+    }
+
+    .card p {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.8;
+    }
+
+    body.night-mode .card p {
+        color: #bbb;
+    }
+    /* ===== Footer ===== */
+    .footer {
+        background-color: #1a5c38;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 15px;
+        margin-top: auto;
+    }
+
+    body.night-mode .footer {
+        background-color: #0d3320;
+    }
+
+
+    /* Admin */
+    /* ===== صفحة اللوقين ===== */
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+    }
+
+    .login-box {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: right;
+    }
+
+    body.night-mode .login-box {
+        background: #2a2a2a;
+    }
+
+    .login-box h2 {
+        text-align: center;
+        color: #1a5c38;
+        margin-bottom: 25px;
+        font-size: 24px;
+    }
+
+    body.night-mode .login-box h2 {
+        color: #4caf7d;
+    }
+
+    .login-box label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    body.night-mode .login-box label {
+        color: #ccc;
+    }
+
+    .login-box input {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+        text-align: right;
+    }
+
+    body.night-mode .login-box input {
+        background: #1a1a1a;
+        border-color: #444;
+        color: white;
+    }
+
+    .login-box button {
+        width: 100%;
+        padding: 12px;
+        background-color: #1a5c38;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .login-box button:hover {
+        background-color: #f0c040;
+        color: #1a5c38;
+    }
+
+    .error-msg {
+        background: #ffe0e0;
+        color: #c00;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    /* ===== Dashboard ===== */
+    .dashboard-container {
+        padding: 40px 60px;
+    }
+
+    .dashboard-container h2 {
+        color: #1a5c38;
+        margin-bottom: 10px;
+    }
+
+    body.night-mode .dashboard-container h2 {
+        color: #4caf7d;
+    }
+
+    .success-msg {
+        background: #d4edda;
+        color: #155724;
+        padding: 12px 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .btn-add {
+        background-color: #1a5c38;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .btn-add:hover {
+        background-color: #f0c040;
+        color: #1a5c38;
+    }
+
+    .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    body.night-mode .admin-table {
+        background: #2a2a2a;
+    }
+
+    .admin-table th {
+        background-color: #1a5c38;
+        color: white;
+        padding: 14px;
+        text-align: right;
+    }
+
+    .admin-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid #eee;
+    }
+
+    body.night-mode .admin-table td {
+        border-bottom: 1px solid #444;
+        color: #eee;
+    }
+
+    .btn-edit {
+        background-color: #1a5c38;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 6px;
+        text-decoration: none;
+        margin-left: 5px;
+    }
+
+    .btn-delete {
+        background-color: #c0392b;
+        color: white;
+        padding: 6px 14px;
+        border-radius: 6px;
+        text-decoration: none;
+    }
+
+    .btn-logout {
+        background-color: #c0392b;
+        color: white !important;
+        padding: 8px 18px;
+        border-radius: 8px;
+    }
+    /* ===== صفحة الإضافة والتعديل ===== */
+    .form-container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.night-mode .form-container {
+        background: #2a2a2a;
+    }
+
+    .form-container h2 {
+        color: #1a5c38;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    body.night-mode .form-container h2 {
+        color: #4caf7d;
+    }
+
+    .form-container h3 {
+        color: #1a5c38;
+        margin: 20px 0 10px;
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    body.night-mode .form-container label {
+        color: #ccc;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+        width: 100%;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+        text-align: right;
+        font-family: inherit;
+    }
+
+    body.night-mode .form-container input,
+    body.night-mode .form-container textarea,
+    body.night-mode .form-container select {
+        background: #1a1a1a;
+        border-color: #444;
+        color: white;
+    }
+
+    .form-container button {
+        width: 100%;
+        padding: 14px;
+        background-color: #1a5c38;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .form-container button:hover {
+        background-color: #f0c040;
+        color: #1a5c38;
+    }
+    /* ===== صفحة التعديل ===== */
+    .update-layout {
+        display: flex;
+        gap: 30px;
+    }
+
+    .update-form {
+        flex: 2;
+    }
+
+    .update-preview {
+        flex: 1;
+        text-align: center;
+    }
+
+    .update-preview h3 {
+        color: #1a5c38;
+        margin-bottom: 10px;
+    }
+
+    .update-preview img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        object-fit: cover;
+        max-height: 150px;
+    }
+    /* ===== معرض المناطق ===== */
+    .regions-container {
+        padding: 40px 60px;
+    }
+
+    .regions-container h2 {
+        color: #1a5c38;
+        font-size: 28px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    body.night-mode .regions-container h2 {
+        color: #4caf7d;
+    }
+
+    .regions-container>p {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    body.night-mode .regions-container>p {
+        color: #bbb;
+    }
+
+    /* فلتر البحث */
+    .filter-bar {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+
+    .filter-bar input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+        text-align: right;
+    }
+
+    .filter-bar select {
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    body.night-mode .filter-bar input,
+    body.night-mode .filter-bar select {
+        background: #2a2a2a;
+        border-color: #444;
+        color: white;
+    }
+
+    #countDisplay {
+        color: #666;
+        font-size: 14px;
+    }
+
+    /* الكروت */
+    .regions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .region-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s;
+        display: block;
+    }
+
+    .region-card:hover {
+        transform: translateY(-5px);
+    }
+
+    body.night-mode .region-card {
+        background: #2a2a2a;
+    }
+
+    .region-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .no-image {
+        width: 100%;
+        height: 180px;
+        background: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+    }
+
+    body.night-mode .no-image {
+        background: #333;
+    }
+
+    .region-info {
+        padding: 15px;
+    }
+
+    .region-type {
+        background: #1a5c38;
+        color: white;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+
+    .region-info h3 {
+        font-size: 20px;
+        margin: 8px 0 5px;
+        color: #222;
+    }
+
+    body.night-mode .region-info h3 {
+        color: #eee;
+    }
+
+    .region-info p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    body.night-mode .region-info p {
+        color: #bbb;
+    }
+    .regions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .region-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: block;
+        cursor: pointer;
+    }
+
+    .region-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    body.night-mode .region-card {
+        background: #2a2a2a;
+    }
+
+    .region-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .no-image {
+        width: 100%;
+        height: 200px;
+        background: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+    }
+
+    .region-info {
+        padding: 15px;
+    }
+
+    .region-info h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+        color: #1a5c38;
+    }
+
+    body.night-mode .region-info h3 {
+        color: #4caf7d;
+    }
+
+    .region-info p {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 12px;
+        line-height: 1.6;
+    }
+
+    body.night-mode .region-info p {
+        color: #bbb;
+    }
+
+    .btn-details {
+        display: inline-block;
+        background-color: #1a5c38;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        transition: background 0.3s;
+    }
+
+    .region-card:hover .btn-details {
+        background-color: #f0c040;
+        color: #1a5c38;
+        }
+            /* ===== صفحة التفاصيل ===== */
+            .details-container {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 40px 20px;
+                flex: 1;
+                width: 100%;
+            }
+        
+            .details-hero img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+                border-radius: 15px;
+                margin-bottom: 30px;
+            }
+        
+            .details-content h1 {
+                font-size: 36px;
+                color: #1a5c38;
+                margin-bottom: 15px;
+            }
+        
+            body.night-mode .details-content h1 {
+                color: #4caf7d;
+            }
+        
+            .details-desc {
+                font-size: 16px;
+                line-height: 1.9;
+                color: #444;
+                margin-bottom: 30px;
+            }
+        
+            body.night-mode .details-desc {
+                color: #ccc;
+            }
+        
+            .details-info-box,
+            .details-features,
+            .details-landmarks {
+                background: #f9f9f9;
+                border-radius: 12px;
+                padding: 20px 25px;
+                margin-bottom: 25px;
+            }
+        
+            body.night-mode .details-info-box,
+            body.night-mode .details-features,
+            body.night-mode .details-landmarks {
+                background: #2a2a2a;
+            }
+        
+            .details-info-box h3,
+            .details-features h3,
+            .details-landmarks h3,
+            .details-gallery h3 {
+                color: #1a5c38;
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+        
+            body.night-mode .details-info-box h3,
+            body.night-mode .details-features h3,
+            body.night-mode .details-landmarks h3,
+            body.night-mode .details-gallery h3 {
+                color: #4caf7d;
+            }
+        
+            .details-info-box ul,
+            .details-features ul,
+            .details-landmarks ul {
+                list-style: none;
+                padding: 0;
+            }
+        
+            .details-info-box li,
+            .details-features li,
+            .details-landmarks li {
+                padding: 6px 0;
+                font-size: 15px;
+                color: #555;
+                border-bottom: 1px solid #eee;
+            }
+        
+            body.night-mode .details-info-box li,
+            body.night-mode .details-features li,
+            body.night-mode .details-landmarks li {
+                color: #ccc;
+                border-bottom-color: #444;
+            }
+        
+            /* معرض الصور */
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                margin-top: 15px;
+            }
+        
+            .gallery-grid img {
+                width: 100%;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 10px;
+                transition: transform 0.3s;
+                cursor: pointer;
+            }
+        
+            .gallery-grid img:hover {
+                transform: scale(1.05);
+            }
+        
+            /* زر الرجوع */
+            .btn-back {
+                display: inline-block;
+                background-color: #1a5c38;
+                color: white;
+                padding: 12px 30px;
+                border-radius: 25px;
+                text-decoration: none;
+                font-size: 16px;
+                margin-top: 20px;
+                transition: background 0.3s;
+            }
+        
+            .btn-back:hover {
+                background-color: #f0c040;
+                color: #1a5c38;
+            }
