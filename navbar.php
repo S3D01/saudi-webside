@@ -1,6 +1,10 @@
 <nav class="navbar">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <div class="nav-logo">
-        <a href="index.php">🇸🇦 اكتشف السعودية</a>
+        <a href="index.php">
+                    <img src="assets/light.png" alt="logo">
+        </a>
     </div>
     <div>
     <ul class="nav-links">
@@ -12,8 +16,12 @@
         <div class="nav-services">
         <a href="admin/login.php">دخول المشرف</a>
         
-        <button onclick="toggleNightMode()" id="modeBtn">🌙 </button>
-        
+<button onclick="toggleNightMode()" id="modeBtn"><i data-lucide="moon" id="modeIcon"></i></button>        
     </div>
-    
+    <script>
+  lucide.createIcons();
+</script>
 </nav>
+
+
+

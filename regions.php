@@ -56,9 +56,8 @@
     </div>
 </div>
 
-<footer class="footer">
-    <p>© اكتشف السعودية — جامعة الملك سعود</p>
-</footer>
+<?php include 'footer.php'; ?>
+
 
 <script>
 const searchInput = document.getElementById('searchInput');

@@ -1,128 +1,122 @@
-    /* ===== إعدادات عامة ===== */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-        main {
-        flex: 1;
-    }
-    body {
-        font-family: 'Segoe UI', Tahoma, sans-serif;
-        direction: rtl;
-        background-color: #f5f5f5;
-        color: #222;
-        transition: background 0.3s, color 0.3s;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+/* ===== إعدادات عامة ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* ===== الوضع الليلي ===== */
-    body.night-mode {
-        background-color: #1a1a1a;
-        color: #f0f0f0;
-    }
+main {
+    flex: 1;
+}
 
-    #modeBtn {
-        background: linear-gradient(135deg, #f0c040, #e6a817);
-        border: none;
-        padding: 8px 18px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 18px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        transition: transform 0.2s;
-    }
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    direction: rtl;
+    background-color: #f5f5f5;
+    color: #222;
+    transition: background 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-    #modeBtn:hover {
-        transform: scale(1.1);
-    }
+/* ===== الوضع الليلي ===== */
+body.night-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
 
-    body.night-mode .navbar {
-        background-color: #0d3320;
-    }
+/* ===== الناف بار ===== */
+.navbar {
+    background-color: #1a5c38;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    body.night-mode #modeBtn {
-        background: linear-gradient(135deg, #1a1a2e, #16213e);
-        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-    }
+body.night-mode .navbar {
+    background-color: #0d3320;
+}
 
-    /* ===== الناف بار ===== */
-    .navbar {
-        background-color: #1a5c38;
-        padding: 15px 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.nav-logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-    .nav-logo a {
-        color: white;
-        text-decoration: none;
-        font-size: 22px;
-        font-weight: bold;
-    }
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
 
-    .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
 
-    .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-size: 16px;
-    }
+.nav-links a:hover {
+    color: #f0c040;
+}
 
-    .nav-links a:hover {
-        color: #f0c040;
-    }
+/* ===== دخول المشرف ===== */
+.nav-services {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-    .nav-services {
-        background-color: #1a5c38;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-            gap: 20px;
+.nav-services a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    border: 1px solid white;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
 
-    }   
+.nav-services a:hover {
+    background-color: #f0c040;
+    color: #1a5c38;
+    border-color: #f0c040;
+}
 
-    .nav-services a {
-        background-color: #1a5c38;
-        color: white;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 16px;
-        transition: background 0.3s, color 0.3s;
-    }
-    .nav-services a :hover {
-        background-color: #f0c040;
-        color: #1a5c38;
-    }
+body.night-mode .nav-services a {
+    border-color: #4caf7d;
+    color: #4caf7d;
+}
 
-    /* ===== زر الوضع الليلي ===== */
-    #modeBtn {
-        background-color: #f0c040;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: bold;
-    }
+body.night-mode .nav-services a:hover {
+    background-color: #4caf7d;
+    color: #0d3320;
+    border-color: #4caf7d;
+}
 
-    body.night-mode .navbar {
-        background-color: #0d3320;
-    }
+/* ===== زر الوضع الليلي ===== */
+#modeBtn {
+    background: linear-gradient(135deg, #f0c040, #e6a817);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, background 0.3s;
+}
 
-    body.night-mode #modeBtn {
-        background-color: #c9a227;
-    }
+#modeBtn:hover {
+    transform: scale(1.1);
+}
 
+body.night-mode #modeBtn {
+    background: linear-gradient(135deg, #4caf7d, #2a9d5f);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
     /* ===== Hero Section ===== */
     .hero {
         display: flex;
@@ -134,7 +128,7 @@
     }
 
     body.night-mode .hero {
-        background-color: #2a2a2a;
+        background-color: #1A1A1A;
     }
 
     .hero-text h1 {
@@ -165,13 +159,23 @@
         border-radius: 25px;
         text-decoration: none;
         font-size: 16px;
-        transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
     }
 
-    .btn-hero:hover {
-        background-color: #f0c040;
-        color: #1a5c38;
-    }
+        .btn-hero:hover {
+            background-color: #f0c040;
+            color: #1a5c38;
+            transform: scale(1.1);
+        }
+        body.night-mode .btn-hero {
+            background-color: #4caf7d;
+            color: #0d3320;
+            box-shadow: 0 2px 8px rgba(76, 175, 125, 0.3);
+        }
+    
+        body.night-mode .btn-hero:hover {
+                transform: scale(1.1);
+        }
 
     .hero-welcome {
         background-color: #1a5c38;
@@ -187,7 +191,7 @@
     }
 
     body.night-mode .hero-welcome {
-        background-color: #0d3320;
+        background-color: #211d1d;
     }
 
     /* ===== قسم البطاقات ===== */
@@ -348,6 +352,14 @@
         text-align: center;
     }
     /* ===== Dashboard ===== */
+    .navbar a{
+        color: white;
+    text-decoration: none;
+    }
+         .navbar a:hover {
+             color: #f0c040;
+             text-decoration: none;
+         }
     .dashboard-container {
         padding: 40px 60px;
     }
@@ -585,12 +597,38 @@
         text-align: right;
     }
 
-    .filter-bar select {
-        padding: 10px 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 15px;
-    }
+.filter-bar select {
+    padding: 10px 20px;
+    border: 1px solid #1a5c38;
+    border-radius: 25px;
+    font-size: 15px;
+    background-color: white;
+    color: #1a5c38;
+    font-weight: bold;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a5c38' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 12px center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-bar select:hover {
+    box-shadow: 0 0 0 3px rgba(26, 92, 56, 0.15);
+}
+
+.filter-bar select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 92, 56, 0.2);
+}
+
+body.night-mode .filter-bar select {
+    background-color: #2a2a2a;
+    border-color: #4caf7d;
+    color: #4caf7d;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234caf7d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
 
     body.night-mode .filter-bar input,
     body.night-mode .filter-bar select {

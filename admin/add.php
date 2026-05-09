@@ -7,45 +7,55 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
+function uploadImage($fileKey, $uploadDir) {
+    if (empty($_FILES[$fileKey]['name'])) return '';
+
+    $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    $fileType = mime_content_type($_FILES[$fileKey]['tmp_name']);
+
+    if (!in_array($fileType, $allowed)) return '';
+
+    $ext = pathinfo($_FILES[$fileKey]['name'], PATHINFO_EXTENSION);
+    $newName = uniqid('img_', true) . '.' . $ext;
+    $destination = $uploadDir . $newName;
+
+    if (move_uploaded_file($_FILES[$fileKey]['tmp_name'], $destination)) {
+        return 'uploads/' . $newName;
+    }
+
+    return '';
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $city = $_POST['city'];
-    $region = $_POST['region'];
-    $category = $_POST['category'];
+    $city        = $_POST['city'];
+    $region      = $_POST['region'];
+    $category    = $_POST['category'];
     $description = $_POST['description'];
-    $features = $_POST['features'];
-    $activities = $_POST['activities'];
-    $landmarks = $_POST['landmarks'];
+    $features    = $_POST['features'];
+    $activities  = $_POST['activities'];
+    $landmarks   = $_POST['landmarks'];
 
-    // رفع الصور
-    $main_image = '';
-    if (!empty($_FILES['main_image']['name'])) {
-        $main_image = 'uploads/' . basename($_FILES['main_image']['name']);
-        move_uploaded_file($_FILES['main_image']['tmp_name'], '../' . $main_image);
+    $uploadDir = '../uploads/';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
     }
 
-    $gallery1 = '';
-    if (!empty($_FILES['gallery1']['name'])) {
-        $gallery1 = 'uploads/' . basename($_FILES['gallery1']['name']);
-        move_uploaded_file($_FILES['gallery1']['tmp_name'], '../' . $gallery1);
-    }
+    $main_image = uploadImage('main_image', $uploadDir);
+    $gallery1   = uploadImage('gallery1', $uploadDir);
+    $gallery2   = uploadImage('gallery2', $uploadDir);
+    $gallery3   = uploadImage('gallery3', $uploadDir);
 
-    $gallery2 = '';
-    if (!empty($_FILES['gallery2']['name'])) {
-        $gallery2 = 'uploads/' . basename($_FILES['gallery2']['name']);
-        move_uploaded_file($_FILES['gallery2']['tmp_name'], '../' . $gallery2);
-    }
+    $stmt = $conn->prepare("INSERT INTO places 
+        (city, region, category, description, features, activities, landmarks, main_image, gallery_image1, gallery_image2, gallery_image3)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $gallery3 = '';
-    if (!empty($_FILES['gallery3']['name'])) {
-        $gallery3 = 'uploads/' . basename($_FILES['gallery3']['name']);
-        move_uploaded_file($_FILES['gallery3']['tmp_name'], '../' . $gallery3);
-    }
+    $stmt->bind_param("sssssssssss",
+        $city, $region, $category, $description,
+        $features, $activities, $landmarks,
+        $main_image, $gallery1, $gallery2, $gallery3
+    );
 
-    $sql = "INSERT INTO places (city, region, category, description, features, activities, landmarks, main_image, gallery_image1, gallery_image2, gallery_image3)
-            VALUES ('$city', '$region', '$category', '$description', '$features', '$activities', '$landmarks', '$main_image', '$gallery1', '$gallery2', '$gallery3')";
-
-    if ($conn->query($sql)) {
-        session_start();
+    if ($stmt->execute()) {
         $_SESSION['success'] = 'تم إضافة المحتوى بنجاح ✅';
         header('Location: dashboard.php');
         exit();

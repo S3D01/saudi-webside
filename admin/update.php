@@ -7,51 +7,63 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
-$id = $_GET['id'];
-$row = $conn->query("SELECT * FROM places WHERE id=$id")->fetch_assoc();
+function uploadImage($fileKey, $uploadDir) {
+    if (empty($_FILES[$fileKey]['name'])) return '';
+
+    $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    $fileType = mime_content_type($_FILES[$fileKey]['tmp_name']);
+
+    if (!in_array($fileType, $allowed)) return '';
+
+    $ext = pathinfo($_FILES[$fileKey]['name'], PATHINFO_EXTENSION);
+    $newName = uniqid('img_', true) . '.' . $ext;
+    $destination = $uploadDir . $newName;
+
+    if (move_uploaded_file($_FILES[$fileKey]['tmp_name'], $destination)) {
+        return 'uploads/' . $newName;
+    }
+
+    return '';
+}
+
+$id  = $_GET['id'];
+$stmt = $conn->prepare("SELECT * FROM places WHERE id=?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$row = $stmt->get_result()->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $city = $_POST['city'];
-    $region = $_POST['region'];
-    $category = $_POST['category'];
+    $city        = $_POST['city'];
+    $region      = $_POST['region'];
+    $category    = $_POST['category'];
     $description = $_POST['description'];
-    $features = $_POST['features'];
-    $activities = $_POST['activities'];
-    $landmarks = $_POST['landmarks'];
+    $features    = $_POST['features'];
+    $activities  = $_POST['activities'];
+    $landmarks   = $_POST['landmarks'];
 
-    $main_image = $row['main_image'];
-    if (!empty($_FILES['main_image']['name'])) {
-        $main_image = 'uploads/' . basename($_FILES['main_image']['name']);
-        move_uploaded_file($_FILES['main_image']['tmp_name'], '../' . $main_image);
+    $uploadDir = '../uploads/';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
     }
 
-    $gallery1 = $row['gallery_image1'];
-    if (!empty($_FILES['gallery1']['name'])) {
-        $gallery1 = 'uploads/' . basename($_FILES['gallery1']['name']);
-        move_uploaded_file($_FILES['gallery1']['tmp_name'], '../' . $gallery1);
-    }
+    $main_image = uploadImage('main_image', $uploadDir) ?: $row['main_image'];
+    $gallery1   = uploadImage('gallery1', $uploadDir)   ?: $row['gallery_image1'];
+    $gallery2   = uploadImage('gallery2', $uploadDir)   ?: $row['gallery_image2'];
+    $gallery3   = uploadImage('gallery3', $uploadDir)   ?: $row['gallery_image3'];
 
-    $gallery2 = $row['gallery_image2'];
-    if (!empty($_FILES['gallery2']['name'])) {
-        $gallery2 = 'uploads/' . basename($_FILES['gallery2']['name']);
-        move_uploaded_file($_FILES['gallery2']['tmp_name'], '../' . $gallery2);
-    }
+    $stmt = $conn->prepare("UPDATE places SET 
+        city=?, region=?, category=?, description=?, features=?,
+        activities=?, landmarks=?, main_image=?,
+        gallery_image1=?, gallery_image2=?, gallery_image3=?
+        WHERE id=?");
 
-    $gallery3 = $row['gallery_image3'];
-    if (!empty($_FILES['gallery3']['name'])) {
-        $gallery3 = 'uploads/' . basename($_FILES['gallery3']['name']);
-        move_uploaded_file($_FILES['gallery3']['tmp_name'], '../' . $gallery3);
-    }
+    $stmt->bind_param("sssssssssssi",
+        $city, $region, $category, $description,
+        $features, $activities, $landmarks,
+        $main_image, $gallery1, $gallery2, $gallery3, $id
+    );
 
-    $sql = "UPDATE places SET 
-            city='$city', region='$region', category='$category',
-            description='$description', features='$features',
-            activities='$activities', landmarks='$landmarks',
-            main_image='$main_image', gallery_image1='$gallery1',
-            gallery_image2='$gallery2', gallery_image3='$gallery3'
-            WHERE id=$id";
-
-    if ($conn->query($sql)) {
+    if ($stmt->execute()) {
         $_SESSION['success'] = 'تم تحديث المحتوى بنجاح ✅';
         header('Location: dashboard.php');
         exit();

@@ -7,9 +7,7 @@
 </head>
 <body>
 
-<?php include 'navbar.php'; ?>
-
-<h1 style="text-align:center; margin-top:50px;">أهلاً بك في موقع اكتشف السعودية</h1>
+<?php include 'navbar.php'; ?>      
 
 <section class="hero">
     <div class="hero-text">
@@ -18,8 +16,7 @@
         <a href="regions.php" class="btn-hero">ابدأ الاستكشاف</a>
     </div>
     <div class="hero-welcome">
-        <h2>أهلاً بك 🇸🇦</h2>
-        <p>ابدأ رحلتك لاكتشاف مناطق المملكة</p>
+        <img src="assets/light.png" alt="logo" id="siteLogo">
     </div>
 </section>
 

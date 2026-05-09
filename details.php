@@ -96,9 +96,7 @@ $features = explode('،', $row['features']);
     </div>
 </div>
 
-<footer class="footer">
-    <p>© اكتشف السعودية — جامعة الملك سعود</p>
-</footer>
+<?php include 'footer.php'; ?>
 
 <script src="js/main.js"></script>
 </body>
