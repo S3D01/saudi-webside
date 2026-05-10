@@ -10,7 +10,6 @@
     <ul class="nav-links">
         <li><a href="index.php">الرئيسية</a></li>
         <li><a href="regions.php">معرض المناطق</a></li>
-        <li><a href="details.php">التفاصيل</a></li> 
     </ul>
     </div>
         <div class="nav-services">

@@ -25,7 +25,6 @@ function uploadImage($fileKey, $uploadDir) {
 
     return '';
 }
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $city        = $_POST['city'];
     $region      = $_POST['region'];
@@ -108,8 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <label>*التصنيف</label>
         <select name="category">
-            <option value="ديني">ديني</option>
             <option value="سياحي">سياحي</option>
+            <option value="ديني">ديني</option>
             <option value="تاريخي">تاريخي</option>
             <option value="طبيعي">طبيعي</option>
             <option value="ترفيهي">ترفيهي</option>

@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>اكتشف السعودية</title>
+    <title>حول السعودية</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

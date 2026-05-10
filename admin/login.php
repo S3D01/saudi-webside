@@ -16,11 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-        
-        // إذا كانت كلمة المرور مشفرة (الطريقة الآمنة)
-        // if (password_verify($password, $user['password'])) {
-        
-        // إذا كانت كلمة المرور غير مشفرة (مؤقتاً للتجربة)
+
         if ($password === $user['password']) {
             $_SESSION['admin'] = $username;
             header('Location: dashboard.php');

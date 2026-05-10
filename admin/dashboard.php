@@ -9,6 +9,12 @@ if (!isset($_SESSION['admin'])) {
 
 $message = '';
 
+// رسالة الإضافة أو التعديل من session
+if (isset($_SESSION['success'])) {
+    $message = $_SESSION['success'];
+    unset($_SESSION['success']);
+}
+
 // حذف سجل
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
@@ -68,7 +74,7 @@ $result = $conn->query("SELECT * FROM places");
             <td><?php echo substr($row['description'], 0, 40) . '...'; ?></td>
             <td>
                 <a href="update.php?id=<?php echo $row['id']; ?>" class="btn-edit">تعديل</a>
-                <a href="#" onclick="confirmDelete(<?php echo $row['id']; ?>)" class="btn-delete">حذف</a>
+                <a href="dashboard.php?delete=<?php echo $row['id']; ?>" class="btn-delete" onclick="return confirm('هل تريد حذف هذه المنطقة؟')">حذف</a>
             </td>
         </tr>
         <?php endwhile; ?>

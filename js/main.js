@@ -10,14 +10,12 @@ function updateModeIcon(iconName) {
   const oldIcon = document.getElementById("modeIcon");
   if (!oldIcon) return;
 
-  // إنشاء أيقونة جديدة بنفس الـ id
   const newIcon = document.createElement("i");
   newIcon.setAttribute("data-lucide", iconName);
   newIcon.id = "modeIcon";
 
   oldIcon.replaceWith(newIcon);
 
-  // إعادة تشغيل lucide عشان يرسم الأيقونة الجديدة
   if (typeof lucide !== "undefined") {
     lucide.createIcons();
   }
@@ -50,6 +48,9 @@ window.onload = function () {
     if (logo) logo.src = base + "dark.png";
   }
 };
+
+// ===== Validation =====
+
 function validateLogin(form) {
   const username = form.querySelector('input[name="username"]').value.trim();
   const password = form.querySelector('input[name="password"]').value.trim();
@@ -68,6 +69,7 @@ function validateLogin(form) {
   }
   return true;
 }
+
 function validateAdd(form) {
   const city = form.querySelector('input[name="city"]').value.trim();
   const description = form
@@ -102,27 +104,8 @@ function validateAdd(form) {
     return false;
   }
   return true;
-}function validateUpdate(form) {
-    const city        = form.querySelector('input[name="city"]').value.trim();
-    const description = form.querySelector('textarea[name="description"]').value.trim();
-    const features    = form.querySelector('input[name="features"]').value.trim();
-    const activities  = form.querySelector('input[name="activities"]').value.trim();
-    const landmarks   = form.querySelector('input[name="landmarks"]').value.trim();
-
-    if (!city || !description || !features || !activities || !landmarks) {
-        alert('يرجى تعبئة جميع الحقول المطلوبة');
-        return false;
-    }
-    if (city.length < 2) {
-        alert('اسم المكان يجب أن يكون حرفين على الأقل');
-        return false;
-    }
-    if (description.length < 10) {
-        alert('الوصف يجب أن يكون 10 أحرف على الأقل');
-        return false;
-    }
-    return true;
 }
+
 function validateUpdate(form) {
   const city = form.querySelector('input[name="city"]').value.trim();
   const description = form
@@ -148,6 +131,12 @@ function validateUpdate(form) {
   }
   return true;
 }
+function confirmDelete(id) {
+  if (confirm("هل تريد حذف هذا السجل؟")) {
+    window.location.href = "dashboard.php?delete=" + id;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   if (!form) return;
@@ -168,6 +157,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-function confirmDelete() {
-  return confirm("هل أنت متأكد أنك تريد حذف هذا المكان؟");
-}

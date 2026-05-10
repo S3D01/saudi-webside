@@ -82,8 +82,9 @@ body.night-mode .navbar {
 
 .nav-services a:hover {
     background-color: #f0c040;
-    color: #1a5c38;
-    border-color: #f0c040;
+    color: #000000;
+     border-color: #f0c040;
+    color: green;
 }
 
 body.night-mode .nav-services a {
