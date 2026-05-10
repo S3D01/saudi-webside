@@ -45,6 +45,7 @@ $result = $conn->query("SELECT * FROM places");
         <li><a href="../index.php">الصفحة الرئيسية</a></li>
         <li><a href="add.php">إضافة محتوى</a></li>
         <li><a href="logout.php" class="btn-logout">تسجيل الخروج</a></li>
+        <li><button onclick="toggleNightMode()" id="modeBtn"><i data-lucide="moon" id="modeIcon"></i></button></li>
     </ul>
 </nav>
 

@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    // استخدام Prepared Statement لمنع SQL Injection
     $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
